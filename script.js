@@ -1,5 +1,5 @@
 const video = document.getElementById('video');
-
+const container = document.querySelector('.container');
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
@@ -18,7 +18,7 @@ function startVideo() {
 
 video.addEventListener('play', () => {
   const canvas = faceapi.createCanvasFromMedia(video);
-  document.body.append(canvas);
+  container.append(canvas);
   const displaySize = { width: video.width, height: video.height };
 
   faceapi.matchDimensions(canvas, displaySize);
